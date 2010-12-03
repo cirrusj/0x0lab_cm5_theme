@@ -30,10 +30,23 @@ class ZeroXZeroLabTheme extends CM5_Theme
             'extra-css' => array('display' => 'Extra css to be included:', 'type' => 'textarea')
         );
     }
+    
     public function get_layout_class()
     {
         return 'ZeroXZeroLabThemeLayout';
     }
+    
+    public function event_page_prerender(Event $e)
+    {
+    	if (($e->arguments['url'] == '') || ($e->arguments['url'] == '/'))
+    		$e->filtered_value->title = '0x0lab';	
+    }    
+    
+    public function init()
+    {
+    	parent::init();
+    	CM5_Core::get_instance()->events()->connect('page.pre-render', array($this, 'event_page_prerender'));
+    }
 }
+
 ZeroXZeroLabTheme::register();
-?>

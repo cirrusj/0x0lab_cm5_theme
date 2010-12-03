@@ -97,9 +97,6 @@ ul{
   padding: 0px 15px 50px 15px;
 }
 
-#content .article p {
-  text-indent: 20px;
-}
 
 #spacer{
     clear: both;
@@ -261,6 +258,8 @@ ul{
     border-radius: 5px;
     
     -moz-box-shadow: inset 1px 1px 5px #656565;
+    -webkit-box-shadow: inset 1px 1px 5px #656565;
+    box-shadow: inset 1px 1px 5px #656565;
     background-color: #BDCDAA;
     
     float: right;
@@ -291,7 +290,7 @@ h2 {	margin: 15px 0px 9px 0px;	}
 h3 {	margin: 15px 0px 9px 0px;	}
 h4 {	margin: 19px 0px 9px 0px;	}
 
-p{	margin: 4px 0px;	}
+p {  margin: 4px 0px 4px 1em; text-align: justify; margin-left: 1em; }
 
 pre {
 	background-color: black;
