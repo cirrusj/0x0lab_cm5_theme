@@ -4,7 +4,7 @@ class ZeroXZeroLabThemeLayout extends CM5_ThemeLayout
 {
     private $mainmenu = null;
     
-    public static $theme_nickname = 'default';
+    public static $theme_nickname = '0x0lab';
     
     public function get_mainmenu()
     {
