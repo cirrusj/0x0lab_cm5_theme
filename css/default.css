@@ -330,3 +330,43 @@ blockquote {
 blockquote p{
 	text-indent: 0px !important;
 }
+
+
+/** Forms **/
+
+.form {
+	width: 400px;
+	margin: 15px 30px;
+	border: 1px solid #CBCFA2;
+    padding: 10px 15px;
+}
+
+.form ul.fields {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.form label > span{
+	display: block;
+}
+
+.form input:not([type=submit]), .form textarea{
+	width: 99%;
+}
+.form .hint, .form .error {
+	display: block;
+	font-size: 0.9em;
+}
+.form .hint {
+	color: #828282;
+	font-style: italic;
+}
+
+.form .error {
+	color: red;
+}
+
+.form .buttons {
+	text-align: right;
+}

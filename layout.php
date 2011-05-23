@@ -32,26 +32,26 @@ class ZeroXZeroLabThemeLayout extends CM5_ThemeLayout
     private function init_menu()
     {
         $this->mainmenu = new SmartMenu(array('class' => 'menu'));        
-        $this->__add_menu_entries($this->mainmenu, CM5_Core::get_instance()->get_tree(), 2);
+        $this->__add_menu_entries($this->mainmenu, CM5_Core::getInstance()->getTree(), 2);
         
         // Append menu
-        $this->get_document()->get_body()->getElementById("main-menu")
+        $this->getDocument()->get_body()->getElementById("main-menu")
                 ->append($this->mainmenu->render());
     }
     
-    protected function __init_layout()
+    protected function onInitialize()
     {   
-        $this->activate();
-        $doc = $this->get_document();    
-        $this->get_document()->title = GConfig::get_instance()->site->title;
-        $this->get_document()->add_ref_css(surl('/themes/0x0lab/css/default.css'));
+        $this->activateSlot();
+        $doc = $this->getDocument();    
+        $this->getDocument()->title = CM5_Config::getInstance()->site->title;
+        $this->getDocument()->add_ref_css(surl('/themes/0x0lab/css/default.css'));
         
-        if ($this->get_config()->{"favicon-url"})
-            $this->get_document()->add_favicon($this->get_config()->{"favicon-url"});
+        if ($this->getConfig()->{"favicon-url"})
+            $this->getDocument()->add_favicon($this->getConfig()->{"favicon-url"});
         
         etag('div id="wrapper"')->push_parent();
         etag('div id="header"',
-            tag('h1', GConfig::get_instance()->site->title),
+            tag('h1', CM5_Config::getInstance()->site->title),
             tag('div id="main-menu"')
         );
         etag('div id="main"',
@@ -60,12 +60,12 @@ class ZeroXZeroLabThemeLayout extends CM5_ThemeLayout
             tag('div id="spacer"')
         );
         etag('div id="footer" html_escape_off', 
-            $this->get_config()->footer
+            $this->getConfig()->footer
         );
-        $this->set_default_container($def_content);
+        $this->setSlot('default', $def_content);
         
-        if ($this->get_config()->{"extra-css"})
-            $this->get_document()->get_head()->append(tag('style type="text/css" html_escape_off',$this->get_config()->{"extra-css"}));
+        if ($this->getConfig()->{"extra-css"})
+            $this->getDocument()->get_head()->append(tag('style type="text/css" html_escape_off',$this->getConfig()->{"extra-css"}));
             
         // Search widget
         $this->init_menu();
@@ -73,4 +73,3 @@ class ZeroXZeroLabThemeLayout extends CM5_ThemeLayout
     }
 }
 
-?>
